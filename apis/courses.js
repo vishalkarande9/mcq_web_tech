@@ -1,7 +1,8 @@
-let questions = require('./../models/questions');
+let courses = require('./../models/courses');
+
 
 function get(req, res) {
-    questions.get((err, result) => {
+    courses.get((err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -21,7 +22,7 @@ function get(req, res) {
 
 function add(req, res) {
     let request = req.body;     
-    questions.add(request, (err, result) => {
+    courses.add(request, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -40,7 +41,7 @@ function add(req, res) {
 
 function remove(req, res) {
     let id = req.body._id;
-    questions.remove(id, (err, result) => {
+    courses.remove(id, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -62,7 +63,7 @@ function update(req, res) {
     let id = req.body._id;
 	let data = req.body;
 
-    questions.update(id, data, {}, (err, result) => {
+    courses.update(id, data, {}, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -79,14 +80,34 @@ function update(req, res) {
 	});
 }
 
+function deleteMany(req, res) {
+    let course_title = req.body.course_title;
+  //  let course_title = JSON.parse(req.body.course_title);
+//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",course_title)
+    courses.deleteMany(course_title, (err, result) => {
+		if(err){
+            let obj={
+                code:400,
+                message:err
+                }
+            res.json(obj);
+        } else{
+            let obj={
+                code:200,
+                message:"success"
+                }
+            res.json(obj);
+        }
+	});
+}
+
+
+
 module.exports.get = get 
 module.exports.add = add 
-module.exports.remove = remove 
+module.exports.remove = remove
+module.exports.deleteMany = deleteMany  
 module.exports.update = update 
-
-
-
-
 
 
 

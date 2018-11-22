@@ -1,7 +1,8 @@
-let questions = require('./../models/questions');
+let sections = require('./../models/sections');
+
 
 function get(req, res) {
-    questions.get((err, result) => {
+    sections.get((err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -21,7 +22,7 @@ function get(req, res) {
 
 function add(req, res) {
     let request = req.body;     
-    questions.add(request, (err, result) => {
+    sections.add(request, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -39,8 +40,9 @@ function add(req, res) {
 }
 
 function remove(req, res) {
-    let id = req.body._id;
-    questions.remove(id, (err, result) => {
+    console.log("inside api remove");
+    let id = req.body.id;
+    sections.remove(id, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -62,7 +64,7 @@ function update(req, res) {
     let id = req.body._id;
 	let data = req.body;
 
-    questions.update(id, data, {}, (err, result) => {
+    sections.update(id, data, {}, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -83,10 +85,6 @@ module.exports.get = get
 module.exports.add = add 
 module.exports.remove = remove 
 module.exports.update = update 
-
-
-
-
 
 
 
