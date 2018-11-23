@@ -77,14 +77,12 @@ function update(req, res) {
                 }
             res.json(obj);
         }
-	});
+	}); 
 }
 
-function deleteMany(req, res) {
-    let course_title = req.body.course_title;
-  //  let course_title = JSON.parse(req.body.course_title);
-//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",course_title)
-    courses.deleteMany(course_title, (err, result) => {
+function getById(req, res) {
+    let id = req.body._id;
+    courses.getById(id, (err, result) => {
 		if(err){
             let obj={
                 code:400,
@@ -94,7 +92,8 @@ function deleteMany(req, res) {
         } else{
             let obj={
                 code:200,
-                message:"success"
+                message:"success",
+                data:result
                 }
             res.json(obj);
         }
@@ -106,7 +105,7 @@ function deleteMany(req, res) {
 module.exports.get = get 
 module.exports.add = add 
 module.exports.remove = remove
-module.exports.deleteMany = deleteMany  
+module.exports.getById = getById  
 module.exports.update = update 
 
 
