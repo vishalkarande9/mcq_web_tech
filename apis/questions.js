@@ -39,7 +39,7 @@ function add(req, res) {
 }
 
 function remove(req, res) {
-    let id = req.body._id;
+    let id = req.query._id;
     questions.remove(id, (err, result) => {
 		if(err){
             let obj={

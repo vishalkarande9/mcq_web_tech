@@ -40,8 +40,7 @@ function add(req, res) {
 }
 
 function remove(req, res) {
-    console.log("inside api remove");
-    let id = req.body.id;
+    let id = req.query._id;
     sections.remove(id, (err, result) => {
 		if(err){
             let obj={
