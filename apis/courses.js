@@ -40,7 +40,9 @@ function add(req, res) {
 }
 
 function remove(req, res) {
-    let id = req.body._id;
+    console.log("req :",req.query);
+    let id = req.query._id;
+   // console.log("id :",id);
     courses.remove(id, (err, result) => {
 		if(err){
             let obj={
@@ -60,6 +62,7 @@ function remove(req, res) {
 }
 
 function update(req, res) {
+    console.log("req :",req);
     let id = req.body._id;
 	let data = req.body;
 
