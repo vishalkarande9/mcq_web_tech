@@ -11,6 +11,6 @@ mongoose.connect('mongodb://localhost/mcq');
 var db = mongoose.connection;
 app.use(cors());
 app.use('/api',routes) 
-app.listen(3001);
-console.log("Running on port 3001..");
+app.listen(5001);
+console.log("Running on port 5001..");
 

@@ -2,6 +2,8 @@ const express = require("express");
 const question=require("./../apis/questions.js");
 const course=require("./../apis/courses.js");
 const section=require("./../apis/sections.js");
+const courseSection=require("./../apis/courseSection.js");
+
 const router = express.Router();
 
 router.get('/course/get',course.get)
@@ -9,6 +11,7 @@ router.get('/course/getById',course.getById)
 router.post('/course/update',course.update)
 router.put('/course/add',course.add)
 router.delete('/course/delete',course.remove)
+
 
 
 router.get('/section/get',section.get)
@@ -22,6 +25,8 @@ router.get('/question/getById',question.getById)
 router.post('/question/update',question.update)
 router.put('/question/add',question.add)
 router.delete('/question/delete',question.remove)
+
+router.get('/getCourseSection/getById',courseSection.getById)
 
 
 module.exports = router;
