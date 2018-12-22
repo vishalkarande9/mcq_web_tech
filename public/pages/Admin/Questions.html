@@ -1,0 +1,41 @@
+<script src="../../js/controllers/QuestionsController.js"></script>
+<div ng-controller="QuestionsController as qc">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Questions</h3>
+                </div>
+                <div class="panel-body">
+                    <div uib-alert ng-repeat="alert in qc.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="qc.closeAlert($index)" dismiss-on-timeout="5000">{{alert.message}}</div>
+                    <hr/>
+                    <formly-form model="qc.questions" fields="qc.questionFields" form="qc.questionsForm" >
+                        <button type="submit" ng-click="qc.create()" class="btn btn-primary" ng-disabled="qc.questionsForm.$invalid">Create
+                        </button>
+                        <button type="submit" ng-click="qc.update()" class="btn btn-primary" ng-disabled="qc.questionsForm.$invalid">Update
+                        </button>
+                    </formly-form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <!--<table class="table table-striped table-bordered">-->
+                <!--<thead>-->
+                <!--<th>Title</th>-->
+                <!--<th>Description</th>-->
+                <!--<th>Code</th>-->
+                <!--<th>Action</th>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr data-ng-repeat="cc in test">-->
+                    <!--<td>{{ cc.course_title }}</td>-->
+                    <!--<td>{{ cc.course_description }}</td>-->
+                    <!--<td>{{ cc.course_code }}</td>-->
+                    <!--<td> <div class="btn-group"><input type="submit" value="Update" class="btn btn-primary margin-left" ng-click="updateFromTable(cc.course_title,cc.course_description,cc.course_code,cc._id)"></input></div><div class="btn-group"><input type="submit" value="Delete" class="btn btn-danger margin-left" ng-click="delete(cc._id)"></div></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        </div>
+    </div>
+</div>

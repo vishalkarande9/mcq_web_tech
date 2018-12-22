@@ -1,0 +1,44 @@
+<div ng-controller="UserSectionController as vm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sections</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="panel-body">
+
+
+                <div class="row">
+                    <div ng-repeat="item in vm.sectionCards">
+                        <div class="col-md-6">
+
+                            <div class="card text-center border-dark mb-3" style="width: 25rem;padding-bottom: 50px;padding-left: 50px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{item.section_title}}</h5>
+                                    <p class="card-text">{{item.section_description}}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><button type="submit" ng-click="vm.getQuestions(item.section_title,0,item.course_details.course_id,item._id)" class="btn btn-primary" >EASY</button></li>
+                                    <li class="list-group-item"><button type="submit" ng-click="vm.getQuestions(item.section_title,1,item.course_details.course_id,item._id)" class="btn btn-primary" >MODERATE</button></li>
+                                    <li class="list-group-item"><button type="submit" ng-click="vm.getQuestions(item.section_title,2,item.course_details.course_id,item._id)" class="btn btn-primary" >HARD</button></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

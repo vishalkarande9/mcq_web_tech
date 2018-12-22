@@ -1,0 +1,40 @@
+<div ng-controller="UserHomeController as vm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Home</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+                <div class="panel-body">
+
+
+                    <div class="row">
+                        <div ng-repeat="item in vm.cards">
+                            <div class="col-md-6">
+
+                                <div class="card text-center " style="width: 25rem;padding-bottom: 50px;padding-left: 50px;">
+                                    <img  class="img-responsive" src="./img/img5.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.course_title}}</h5>
+                                        <p class="card-text">{{item.course_description}}</p>
+                                        <button type="submit" ng-click="vm.goToSection(item.course_title,item.course_description,item._id)" class="btn btn-primary" >Go to sections</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                 </div>
+        </div>
+        </div>
+</div>
+

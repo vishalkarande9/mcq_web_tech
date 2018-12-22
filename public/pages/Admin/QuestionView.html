@@ -1,0 +1,39 @@
+<div ng-controller="QuestionViewerController as questionView">
+    <h3>Available Questions</h3>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <select class="form-control" name="course" id="course" ng-model="questionView.courseId" ng-change="questionView.getSection();">
+                <option ng-repeat="course in questionView.courses" value="{{course._id}}">{{course.course_title}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" name="section" id="section" ng-model="questionView.sectionId">
+                <option ng-repeat="section in questionView.sections" value="{{section._id}}">{{section.section_title}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Course</th>
+                    <th>Section</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="question in questionView.questions | filter:{ course_details: { course_id : questionView.courseId}, section_details: { section_id : questionView.sectionId} }">
+                    <td>{{question.question}}</td>
+                    <td>{{question.course_details.course_title}}</td>
+                    <td>{{question.section_details.section_title}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
